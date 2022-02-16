@@ -10,8 +10,10 @@ use Takemo101\SimpleTempla\Filter\{
     Filter,
 };
 use Takemo101\SimpleTempla\Template\{
+    TemplateValueCollection,
     StringTransformerInterface,
     StringTransformer,
+    ValueName,
 };
 
 /**
@@ -131,6 +133,22 @@ class TemplateTest extends TestCase
         $this->assertEquals($boolean, 'true');
         $this->assertEquals($array, '[]');
         $this->assertEquals($object, 'object');
+    }
+
+    /**
+     * @test
+     */
+    public function createTemplateValueCollection__OK()
+    {
+        $data = 'hello';
+
+        $collection = new TemplateValueCollection([
+            'data' => $data,
+        ]);
+
+        $result = $collection->findByValueNames([new ValueName('data')]);
+
+        $this->assertEquals($result, $data);
     }
 }
 
