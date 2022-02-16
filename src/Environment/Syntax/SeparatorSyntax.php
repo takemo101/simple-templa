@@ -38,11 +38,11 @@ final class SeparatorSyntax extends Syntax
     {
         $separator = $this->value();
 
-        $result = array_unique(
+        $result = $separator ? array_unique(
             array_filter(
                 explode($separator, $text)
             )
-        );
+        ) : [];
 
         if (count($result) == 0) {
             throw new SeparatorSyntaxException('there is no separate string');
