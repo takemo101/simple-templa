@@ -44,10 +44,10 @@ final class StringTransformer implements StringTransformerInterface
     /**
      * transform boolean type to string type
      *
-     * @param boolean $value
+     * @param mixed $value
      * @return string|null
      */
-    protected function transformBoolean(bool $value): ?string
+    protected function transformBoolean(mixed $value): ?string
     {
         // check boolean
         if (is_bool($value)) {
@@ -63,7 +63,7 @@ final class StringTransformer implements StringTransformerInterface
      * @param array $value
      * @return string|null
      */
-    protected function transformArray(array $value): ?string
+    protected function transformArray(mixed $value): ?string
     {
         // check array
         if (is_array($value)) {
@@ -76,10 +76,10 @@ final class StringTransformer implements StringTransformerInterface
     /**
      * transform object type to string type
      *
-     * @param object $value
+     * @param mixed $value
      * @return string|null
      */
-    protected function transformObject(object $value): ?string
+    protected function transformObject(mixed $value): ?string
     {
         // check object
         if (is_object($value)) {
@@ -88,7 +88,7 @@ final class StringTransformer implements StringTransformerInterface
             }
 
             if (!method_exists($value, '__toString')) {
-                throw new StringTransformException('string transform error: __toString method is missing');
+                throw new StringTransformException('__toString method is missing');
             }
         }
 
@@ -103,6 +103,6 @@ final class StringTransformer implements StringTransformerInterface
      */
     protected function toJson(mixed $value): string
     {
-        return json_encode($value, JSON_PRETTY_PRINT);
+        return json_encode($value);
     }
 }

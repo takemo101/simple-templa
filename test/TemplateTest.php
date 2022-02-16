@@ -9,7 +9,10 @@ use Takemo101\SimpleTempla\Filter\{
     FilterName,
     Filter,
 };
-use Takemo101\SimpleTempla\Template\StringTransformerInterface;
+use Takemo101\SimpleTempla\Template\{
+    StringTransformerInterface,
+    StringTransformer,
+};
 
 /**
  * template test
@@ -29,6 +32,8 @@ class TemplateTest extends TestCase
             Hello, i like {{ data.language|strtoupper }}.
             PHP is {{ data.php_is.simple|strtolower|ucfirst }} and {{ data.php_is.nice|strtolower }}.
             {{ data.thank_you.thank|ucfirst }} {{ data.thank_you.you }}
+
+            {{ data }}
         ";
 
         // create template object from text
@@ -104,6 +109,28 @@ class TemplateTest extends TestCase
         $result = $template->parse(['array' => $testData]);
 
         $this->assertEquals($result, json_encode($testData));
+    }
+
+    /**
+     * @test
+     */
+    public function createStringTransformer__OK()
+    {
+        $transformer = new StringTransformer;
+        $boolean = $transformer->transform(true);
+        $array = $transformer->transform([]);
+        $object = $transformer->transform(new class
+        {
+            public $a = 'a';
+            public function __toString()
+            {
+                return 'object';
+            }
+        });
+
+        $this->assertEquals($boolean, 'true');
+        $this->assertEquals($array, '[]');
+        $this->assertEquals($object, 'object');
     }
 }
 
