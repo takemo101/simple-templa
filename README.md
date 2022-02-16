@@ -16,7 +16,7 @@ $environment = DefaultEnvironmentCreator::create();
 // template text
 $text = "
     Hello, i like {{ data.language|strtoupper }}.
-    PHP is {{ data.php_is.simple|strtolower }} and {{ data.php_is.nice|strtolower }}.
+    PHP is {{ data.php_is.simple|strtolower|ucfirst }} and {{ data.php_is.nice|strtolower }}.
     {{ data.thank_you.thank|ucfirst }} {{ data.thank_you.you }}
 ";
 
@@ -40,7 +40,7 @@ $result = $template->parse([
 
 echo $result;
 //    Hello, i like PHP.
-//    PHP is simple and nice.
+//    PHP is Simple and nice.
 //    Thank you.
 ```
 
