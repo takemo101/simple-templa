@@ -13,6 +13,10 @@ shell-composer:
 install:
 	docker-compose run --rm composer install
 
+.PHONY: update
+update:
+	docker-compose run --rm composer update
+
 .PHONY: autoload
 autoload:
 	docker-compose run --rm composer dump-autoload

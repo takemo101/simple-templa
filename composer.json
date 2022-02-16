@@ -1,6 +1,6 @@
 {
-    "name": "takemo101/simple-php-parser",
-    "description": "Simple PHP Parser",
+    "name": "takemo101/simple-templa",
+    "description": "Simple Template Parser",
     "keywords": [
         "php",
         "package",
@@ -13,7 +13,7 @@
             "role": "Developer"
         }
     ],
-    "homepage": "https://github.com/takemo101/simple-php-parser",
+    "homepage": "https://github.com/takemo101/simple-templa",
     "license": "MIT",
     "require": {
         "nesbot/carbon": "^2.56.0"
@@ -34,7 +34,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require-dev": {
-        "php": "^8.1",
+        "php": "^8.0",
         "phpunit/phpunit": "^9.5"
     }
 }
