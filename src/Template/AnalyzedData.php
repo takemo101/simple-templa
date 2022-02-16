@@ -18,9 +18,7 @@ final class AnalyzedData
     /**
      * parse process
      *
-     * @param TemplateValueCollection $values
-     * @param FilterCollection $filters
-     * @param
+     * @param ValueReplacer $replacer
      * @return string
      */
     public function replace(

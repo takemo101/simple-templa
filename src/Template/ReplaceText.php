@@ -12,7 +12,7 @@ final class ReplaceText
      *
      * @var string
      */
-    private ?string $changedText;
+    private string $changedText;
 
     /**
      * replaced text
@@ -24,7 +24,7 @@ final class ReplaceText
     /**
      * constructor
      *
-     * @param ChangeKeyText $text changed text
+     * @param AnalyzeText $text
      */
     public function __construct(
         AnalyzeText $text,
@@ -36,9 +36,9 @@ final class ReplaceText
     /**
      * get replaced text
      *
-     * @return ?string
+     * @return string
      */
-    public function getReplacedText(): ?string
+    public function getReplacedText(): string
     {
         return $this->replacedText;
     }
@@ -56,7 +56,8 @@ final class ReplaceText
     /**
      * replace replace key to text
      *
-     * @param BlockSyntaxText $blockText
+     * @param ReplaceKey $replaceKey
+     * @param string $replace
      * @return self
      */
     public function replace(ReplaceKey $replaceKey, string $replace): self

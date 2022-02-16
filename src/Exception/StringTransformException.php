@@ -4,7 +4,7 @@ namespace Takemo101\SimpleTempla\Exception;
 
 use Exception;
 
-class SyntaxAnalyzeException extends Exception
+class StringTransformException extends Exception
 {
     /**
      * constructor
@@ -13,6 +13,6 @@ class SyntaxAnalyzeException extends Exception
      */
     public function __construct(string $message)
     {
-        parent::__construct("syntax analyze error: check this expression {$message}");
+        parent::__construct("string transform error: {$message}");
     }
 }

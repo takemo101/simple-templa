@@ -25,6 +25,9 @@ autoload:
 test:
 	docker-compose run --rm php ./vendor/bin/phpunit
 
+.PHONY: phpstan
+phpstan:
+	docker-compose run --rm phpstan analyse
 
 #### for document ####
 # draw.io command name

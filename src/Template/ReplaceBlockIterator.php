@@ -38,7 +38,7 @@ final class ReplaceBlockIterator
     /**
      * constructor from array
      *
-     * @param array $replaceBlocks
+     * @param ReplaceBlock[] $replaceBlocks
      * @return self
      */
     public static function fromArray(array $replaceBlocks): self

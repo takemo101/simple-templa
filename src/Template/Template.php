@@ -30,7 +30,7 @@ final class Template
     /**
      * parse template text
      *
-     * @param array $data
+     * @param mixed[] $data
      * @return string
      */
     public function parse(array $data): string

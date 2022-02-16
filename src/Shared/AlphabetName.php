@@ -22,14 +22,14 @@ abstract class AlphabetName extends StringValueObject
      */
     protected function validate(string $value): bool
     {
-        return preg_match(self::Regex, $value);
+        return (bool)preg_match(self::Regex, $value);
     }
 
     /**
      * factory
      *
      * @param string[] $names
-     * @return self[]
+     * @return static[]
      */
     public static function fromArrayToObjects(array $names): array
     {

@@ -24,6 +24,11 @@ final class Environment
     private SyntaxAnalyzer $analyzer;
 
     /**
+     * @var StringTransformerInterface
+     */
+    private StringTransformerInterface $defaultTransformer;
+
+    /**
      * constructor
      *
      * @param SyntaxConfig $config
@@ -33,11 +38,11 @@ final class Environment
     public function __construct(
         SyntaxConfig $config,
         private FilterCollection $presetFilters,
-        private ?StringTransformerInterface $defaultTransformer = null,
+        ?StringTransformerInterface $defaultTransformer = null,
     ) {
         $this->analyzer = new SyntaxAnalyzer($config);
 
-        if (!$this->defaultTransformer) {
+        if (!$defaultTransformer) {
             $this->defaultTransformer = new StringTransformer;
         }
     }
@@ -79,7 +84,7 @@ final class Environment
      */
     public function setDefaultStringTransformer(StringTransformerInterface $transformer): self
     {
-        $this->transformer = $transformer;
+        $this->defaultTransformer = $transformer;
 
         return $this;
     }
