@@ -11,3 +11,8 @@ services:
     volumes:
       - .:/var/www/html
     working_dir: /var/www/html
+  phpstan:
+    image: ghcr.io/phpstan/phpstan
+    volumes:
+      - .:/app
+    working_dir: /app

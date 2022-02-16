@@ -43,7 +43,8 @@ final class FilterCollection
     /**
      * execute filter process
      *
-     * @param Filter $filter
+     * @param string $value
+     * @param FilterName[] $names
      * @return string
      */
     public function filtering(string $value, array $names): string
@@ -92,7 +93,7 @@ final class FilterCollection
     /**
      * constructor from array
      *
-     * @param array $flters
+     * @param Filter[] $filters
      * @return self
      */
     public static function fromArray(array $filters): self

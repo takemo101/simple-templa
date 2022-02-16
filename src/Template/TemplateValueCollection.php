@@ -7,6 +7,11 @@ namespace Takemo101\SimpleTempla\Template;
  */
 final class TemplateValueCollection
 {
+    /**
+     * constructor
+     *
+     * @param mixed[] $values
+     */
     public function __construct(
         private array $values
     ) {

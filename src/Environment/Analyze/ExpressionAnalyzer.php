@@ -30,10 +30,12 @@ final class ExpressionAnalyzer
             $filterTexts = $filterSeparator->separate($text);
             $valueText = array_shift($filterTexts);
 
-            return new ExpressionAnalyzeDTO(
-                $valueSeparator->separate($valueText),
-                $filterTexts,
-            );
+            if ($valueText) {
+                return new ExpressionAnalyzeDTO(
+                    $valueSeparator->separate($valueText),
+                    $filterTexts,
+                );
+            }
         }
 
         return new ExpressionAnalyzeDTO(

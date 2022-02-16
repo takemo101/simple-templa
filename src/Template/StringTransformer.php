@@ -60,7 +60,7 @@ final class StringTransformer implements StringTransformerInterface
     /**
      * transform array type to string type
      *
-     * @param array $value
+     * @param mixed $value
      * @return string|null
      */
     protected function transformArray(mixed $value): ?string
@@ -103,6 +103,6 @@ final class StringTransformer implements StringTransformerInterface
      */
     protected function toJson(mixed $value): string
     {
-        return json_encode($value);
+        return (string)json_encode($value);
     }
 }
