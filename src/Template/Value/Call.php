@@ -4,7 +4,10 @@ namespace Takemo101\SimpleTempla\Template\Value;
 
 use InvalidArgumentException;
 
-final class Call implements ValueInterface
+/**
+ * call function value class
+ */
+final class Call extends FactoryValue
 {
     /**
      * @var callable
@@ -40,7 +43,7 @@ final class Call implements ValueInterface
     }
 
     /**
-     * copy method
+     * factory method
      *
      * @param mixed $value
      * @return static
