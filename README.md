@@ -105,6 +105,28 @@ echo $result;
 // TEST
 ```
 
+### Value processing
+You can process the value passed to the template with a function. 
+```
+use Takemo101\SimpleTempla\Environment\DefaultEnvironmentCreator;
+use Takemo101\SimpleTempla\Template\Value\Call;
+
+// create Environment object
+$environment = DefaultEnvironmentCreator::create();
+
+// template text
+$text = "{{ data }}";
+
+// create template object from text
+$template = $environment->createTemplate($text);
+
+// set the function to the value in the Call object
+$result = $template->parse(['data' => new Call('hello', fn ($v) => strtoupper($v))]);
+
+echo $result;
+// HELLO
+```
+
 ### Template language
 Only filters and variables are available in this template language.
 

@@ -15,6 +15,7 @@ use Takemo101\SimpleTempla\Template\{
     StringTransformer,
     ValueName,
 };
+use Takemo101\SimpleTempla\Template\Value\Call;
 
 /**
  * template test
@@ -149,6 +150,37 @@ class TemplateTest extends TestCase
         $result = $collection->findByValueNames([new ValueName('data')]);
 
         $this->assertEquals($result, $data);
+    }
+
+    /**
+     * @test
+     */
+    public function createValue__OK()
+    {
+        $data = 'hello';
+
+        $call = new Call($data, function (mixed $value) {
+            return $value;
+        });
+
+        $collection = new TemplateValueCollection([
+            'data1' => $call,
+            'data2' => $call,
+            'data3' => new Call($data, function (mixed $value) {
+                return $value;
+            }),
+            'data4' => new Call($data, fn ($v) => strtoupper($v)),
+        ]);
+
+        $result1 = $collection->findByValueNames([new ValueName('data1')]);
+        $result2 = $collection->findByValueNames([new ValueName('data2')]);
+        $result3 = $collection->findByValueNames([new ValueName('data3')]);
+        $result4 = $collection->findByValueNames([new ValueName('data4')]);
+
+        $this->assertEquals($result1, $data);
+        $this->assertEquals($result2, $data);
+        $this->assertEquals($result3, $data);
+        $this->assertEquals($result4, strtoupper($data));
     }
 }
 
