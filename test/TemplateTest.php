@@ -159,17 +159,19 @@ class TemplateTest extends TestCase
     {
         $data = 'hello';
 
-        $call = new Call($data, function (mixed $value) {
-            return $value;
+        $call1 = new Call(function (mixed $value) {
+            return strtoupper((string) $value);
         });
 
+        $call2 = new Call(fn ($v) => strtoupper($v));
+
         $collection = new TemplateValueCollection([
-            'data1' => $call,
-            'data2' => $call,
-            'data3' => new Call($data, function (mixed $value) {
+            'data1' => $call1,
+            'data2' => $call1->of($data),
+            'data3' => new Call(function (mixed $value) {
                 return $value;
-            }),
-            'data4' => new Call($data, fn ($v) => strtoupper($v)),
+            }, $data),
+            'data4' => $call2->of($data),
         ]);
 
         $result1 = $collection->findByValueNames([new ValueName('data1')]);
@@ -177,8 +179,8 @@ class TemplateTest extends TestCase
         $result3 = $collection->findByValueNames([new ValueName('data3')]);
         $result4 = $collection->findByValueNames([new ValueName('data4')]);
 
-        $this->assertEquals($result1, $data);
-        $this->assertEquals($result2, $data);
+        $this->assertEquals($result1, null);
+        $this->assertEquals($result2, strtoupper($data));
         $this->assertEquals($result3, $data);
         $this->assertEquals($result4, strtoupper($data));
     }

@@ -120,11 +120,19 @@ $text = "{{ data }}";
 // create template object from text
 $template = $environment->createTemplate($text);
 
+// create Call object
+$call = new Call(fn ($v) => strtoupper($v));
+
 // set the function to the value in the Call object
-$result = $template->parse(['data' => new Call('hello', fn ($v) => strtoupper($v))]);
+$result = $template->parse(['data' => $call->of('hello')]);
 
 echo $result;
 // HELLO
+
+$result = $template->parse(['data' => $call->of('world')]);
+
+echo $result;
+// WORLD
 ```
 
 ### Template language
