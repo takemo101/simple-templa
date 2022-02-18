@@ -10,11 +10,6 @@ use Takemo101\SimpleTempla\Template\Value\ValueInterface;
 final class TemplateValueCollection
 {
     /**
-     * @var mixed[]
-     */
-    private array $cache = [];
-
-    /**
      * constructor
      *
      * @param mixed[] $values
@@ -57,26 +52,9 @@ final class TemplateValueCollection
         }
 
         if ($result instanceof ValueInterface) {
-            $result = $this->toCacheValue($result);
+            $result = $value->execute();
         }
 
         return $result;
-    }
-
-    /**
-     * to cache value by object
-     *
-     * @param ValueInterface $value
-     * @return mixed
-     */
-    private function toCacheValue(ValueInterface $value): mixed
-    {
-        $id = spl_object_id($value);
-
-        if (!isset($this->cache[$id])) {
-            $this->cache[$id] = $value->execute();
-        }
-
-        return $this->cache[$id];
     }
 }
