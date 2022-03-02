@@ -7,7 +7,7 @@ Enjoy!
 Please use as follows
 
 ### Basic
-```
+```php
 use Takemo101\SimpleTempla\Environment\DefaultEnvironmentCreator;
 
 // create Environment object
@@ -50,7 +50,7 @@ echo $result;
 
 ### Filter
 You can add filters to the Enviroment Object
-```
+```php
 use Takemo101\SimpleTempla\Environment\DefaultEnvironmentCreator;
 use Takemo101\SimpleTempla\Filter\ {
     FilterProcessInterface,
@@ -107,7 +107,7 @@ echo $result;
 
 ### Value processing
 You can process the value passed to the template with a function. 
-```
+```php
 use Takemo101\SimpleTempla\Environment\DefaultEnvironmentCreator;
 use Takemo101\SimpleTempla\Template\Value\Call;
 
