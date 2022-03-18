@@ -1,5 +1,9 @@
 # Simple Template Parser
 
+[![Testing](https://github.com/takemo101/simple-templa/actions/workflows/testing.yml/badge.svg)](https://github.com/takemo101/simple-templa/actions/workflows/testing.yml)
+[![PHPStan](https://github.com/takemo101/simple-templa/actions/workflows/phpstan.yml/badge.svg)](https://github.com/takemo101/simple-templa/actions/workflows/phpstan.yml)
+[![Validate Composer](https://github.com/takemo101/simple-templa/actions/workflows/composer.yml/badge.svg)](https://github.com/takemo101/simple-templa/actions/workflows/composer.yml)
+
 The Simple Templa is a simple template parser.  
 Enjoy!  
 
