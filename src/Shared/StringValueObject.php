@@ -15,7 +15,7 @@ abstract class StringValueObject
      * @param string $value
      * @throws InvalidArgumentException
      */
-    public function __construct(
+    final public function __construct(
         private string $value,
     ) {
         if (!$this->validate($this->value)) {
